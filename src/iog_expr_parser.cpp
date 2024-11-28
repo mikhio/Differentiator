@@ -4,9 +4,10 @@
 #include "cli_colors.h"
 
 #include <stdio.h>
+#include <math.h>
 
-double GetG (IogContext_t *cont) {
-  double val = GetE(cont);
+double GetEval (IogContext_t *cont) {
+  double val = GetPolynomial(cont);
 
   if (GET_CHAR(cont) != '\0') {
     IOG_ASSERT(!"SyntaxError: No \0 symbols in the end");
@@ -16,8 +17,8 @@ double GetG (IogContext_t *cont) {
   return val;
 }
 
-double GetE (IogContext_t *cont) {
-  double val = GetT(cont);
+double GetPolynomial (IogContext_t *cont) {
+  double val = GetMonomial(cont);
 
 
   while ((GET_CHAR(cont) == '+') ||(GET_CHAR(cont) == '-')) {
@@ -25,7 +26,7 @@ double GetE (IogContext_t *cont) {
 
     (cont->p)++;
 
-    double val2 = GetT(cont);
+    double val2 = GetMonomial(cont);
 
     if (op == '+')
       val += val2;
@@ -37,52 +38,64 @@ double GetE (IogContext_t *cont) {
   return val;
 }
 
-double GetT (IogContext_t *cont) {
-  double val = GetP(cont);
+double GetMonomial (IogContext_t *cont) {
+  double val = GetPower(cont);
 
   while ((GET_CHAR(cont) == '*') ||(GET_CHAR(cont) == '/')) {
     char op = GET_CHAR(cont);
 
     (cont->p)++;
 
-    double val2 = GetP(cont);
+    double val2 = GetPower(cont);
 
     if (op == '*') {
       val *= val2;
     } else {
-      IOG_ASSERT(!IS_EQUAL(val2, 0) && "Dividing by zero!");
       val /= val2;
     }
   }
 
+  return val;
+}
+
+double GetPower (IogContext_t *cont) {
+  double val = GetExpr(cont);
+
+  if (GET_CHAR(cont) == '^') {
+    (cont->p)++;
+
+    double val2 = GetExpr(cont);
+
+    val = pow(val, val2);
+  }
 
   return val;
 }
 
-double GetP (IogContext_t *cont) {
-  GetS(cont);
+double GetExpr (IogContext_t *cont) {
+  GetSpace(cont);
 
   double val = 0;
   if (GET_CHAR(cont) == '(') {
     (cont->p)++;
 
-    val = GetE(cont);
+    val = GetPolynomial(cont);
 
     if (GET_CHAR(cont) != ')')
       IOG_ASSERT(!"SyntaxError: No closing braket");
 
     (cont->p)++;
   } else {
-    val = GetQ(cont);
+    val = GetDouble(cont);
   }
 
-  GetS(cont);
+  GetSpace(cont);
 
 
   return val;
 }
 
-int GetS (IogContext_t *cont) {
+int GetSpace (IogContext_t *cont) {
   while ((GET_CHAR(cont) == ' ') || (GET_CHAR(cont) == '\n') || (GET_CHAR(cont) == '\t')) {
     (cont->p)++;
   }
@@ -90,27 +103,27 @@ int GetS (IogContext_t *cont) {
   return 0;
 }
 
-double GetQ (IogContext_t *cont) {
+double GetDouble (IogContext_t *cont) {
   double val = 0;
 
   if (GET_CHAR(cont) == '-') {
     (cont->p)++;
-    val -= GetD(cont);
+    val -= GetPosDouble(cont);
   } else {
-    val = GetD(cont);
+    val = GetPosDouble(cont);
   }
 
 
   return val;
 }
 
-double GetD (IogContext_t *cont) {
-  double val = (double) GetN(cont);
+double GetPosDouble (IogContext_t *cont) {
+  double val = (double) GetNumber(cont);
 
   if (GET_CHAR(cont) == '.') {
     (cont->p)++;
 
-    double val2 = (double) GetN(cont);
+    double val2 = (double) GetNumber(cont);
 
     while (val2 > 1) {
       val2 *= 0.1;
@@ -122,7 +135,7 @@ double GetD (IogContext_t *cont) {
   return val;
 }
 
-int GetN (IogContext_t *cont) {
+int GetNumber (IogContext_t *cont) {
   int val = 0;
   int old_p = cont->p;
 

@@ -29,7 +29,7 @@ int main(const int argc, const char *argv[]) {
     IOG_ASSERT(!readLine(cont.expr, sizeof(cont.expr)));
     //fprintf(stderr, "ret %s\n", cont.expr);
 
-    printf(BLACK("Result: %lg\n"), GetG(&cont));
+    printf(BLACK("Result: %lg\n"), GetEval(&cont));
   }
 
   return 0;
