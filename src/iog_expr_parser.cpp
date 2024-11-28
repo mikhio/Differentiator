@@ -5,8 +5,8 @@
 
 #include <stdio.h>
 
-int GetG (IogContext_t *cont) {
-  int val = GetE(cont);
+double GetG (IogContext_t *cont) {
+  double val = GetE(cont);
 
   if (GET_CHAR(cont) != '\0') {
     IOG_ASSERT(!"SyntaxError: No \0 symbols in the end");
@@ -16,8 +16,8 @@ int GetG (IogContext_t *cont) {
   return val;
 }
 
-int GetE (IogContext_t *cont) {
-  int val = GetT(cont);
+double GetE (IogContext_t *cont) {
+  double val = GetT(cont);
 
 
   while ((GET_CHAR(cont) == '+') ||(GET_CHAR(cont) == '-')) {
@@ -25,7 +25,7 @@ int GetE (IogContext_t *cont) {
 
     (cont->p)++;
 
-    int val2 = GetT(cont);
+    double val2 = GetT(cont);
 
     if (op == '+')
       val += val2;
@@ -33,35 +33,38 @@ int GetE (IogContext_t *cont) {
       val -= val2;
   }
 
+
   return val;
 }
 
-int GetT (IogContext_t *cont) {
-  int val = GetP(cont);
+double GetT (IogContext_t *cont) {
+  double val = GetP(cont);
 
   while ((GET_CHAR(cont) == '*') ||(GET_CHAR(cont) == '/')) {
     char op = GET_CHAR(cont);
 
     (cont->p)++;
 
-    int val2 = GetP(cont);
+    double val2 = GetP(cont);
 
-    if (op == '*')
+    if (op == '*') {
       val *= val2;
-    else
+    } else {
+      IOG_ASSERT(!IS_EQUAL(val2, 0) && "Dividing by zero!");
       val /= val2;
+    }
   }
+
 
   return val;
 }
 
-int GetP (IogContext_t *cont) {
+double GetP (IogContext_t *cont) {
   GetS(cont);
 
-  int val = 0;
+  double val = 0;
   if (GET_CHAR(cont) == '(') {
     (cont->p)++;
-
 
     val = GetE(cont);
 
@@ -70,10 +73,11 @@ int GetP (IogContext_t *cont) {
 
     (cont->p)++;
   } else {
-    val = GetN(cont);
+    val = GetQ(cont);
   }
 
   GetS(cont);
+
 
   return val;
 }
@@ -86,6 +90,38 @@ int GetS (IogContext_t *cont) {
   return 0;
 }
 
+double GetQ (IogContext_t *cont) {
+  double val = 0;
+
+  if (GET_CHAR(cont) == '-') {
+    (cont->p)++;
+    val -= GetD(cont);
+  } else {
+    val = GetD(cont);
+  }
+
+
+  return val;
+}
+
+double GetD (IogContext_t *cont) {
+  double val = (double) GetN(cont);
+
+  if (GET_CHAR(cont) == '.') {
+    (cont->p)++;
+
+    double val2 = (double) GetN(cont);
+
+    while (val2 > 1) {
+      val2 *= 0.1;
+    } 
+    
+    val += val2;
+  }
+  
+  return val;
+}
+
 int GetN (IogContext_t *cont) {
   int val = 0;
   int old_p = cont->p;
@@ -96,9 +132,9 @@ int GetN (IogContext_t *cont) {
   }
 
   if (old_p == cont->p) {
-    fprintf(stderr, "expr: '%s', p: %d, char: %c\n", 
+    /*fprintf(stderr, "expr: '%s', p: %d, char: %c\n", 
         cont->expr, cont->p, GET_CHAR(cont)
-    );
+    );*/
     IOG_ASSERT(!"SynataxError: No num symbols");
   }
 

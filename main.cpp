@@ -27,9 +27,9 @@ int main(const int argc, const char *argv[]) {
     IogContext_t cont = {"", 0};
     printf("Expr: ");
     IOG_ASSERT(!readLine(cont.expr, sizeof(cont.expr)));
-    fprintf(stderr, "ret %s\n", cont.expr);
+    //fprintf(stderr, "ret %s\n", cont.expr);
 
-    printf(BLACK("Result: %d\n"), GetG(&cont));
+    printf(BLACK("Result: %lg\n"), GetG(&cont));
   }
 
   return 0;
