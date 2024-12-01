@@ -1,4 +1,5 @@
 #include "iog_expr_parser.h"
+#include "iog_bin_tree.h"
 
 #include "cli_colors.h"
 #include "iog_assert.h"
@@ -23,14 +24,19 @@ int readLine (char *str, size_t max_len) {
 }
 
 int main(const int argc, const char *argv[]) {
-  while (1) {
-    IogContext_t cont = {"", 0};
-    printf("Expr: ");
-    IOG_ASSERT(!readLine(cont.expr, sizeof(cont.expr)));
-    //fprintf(stderr, "ret %s\n", cont.expr);
+  IogContext_t cont = {"", 0};
+  IogBTNode_t *tree = iog_BTNodeInit(0);
 
-    printf(BLACK("Result: %lg\n"), GetEval(&cont));
-  }
+  printf("Expr: ");
+  IOG_ASSERT(!readLine(cont.expr, sizeof(cont.expr)));
+  //fprintf(stderr, "ret %s\n", cont.expr);
+
+  GetEval(&cont, tree);
+
+  size_t dumps_count = 0;
+  IOG_BT_DUMP(tree, &dumps_count);
+
+  iog_BTDestroy(&tree);
 
   return 0;
 }

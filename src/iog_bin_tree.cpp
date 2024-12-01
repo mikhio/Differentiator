@@ -6,9 +6,10 @@
 #include "cli_colors.h"
 
 #include <stdlib.h>
+#include <string.h>
 #include <stdio.h>
 
-IogBTNode_t *iog_BTNodeInit (IogBTData_t data) {
+IogBTNode_t *iog_BTNodeInit (IogBTData_t data, IogBTNodeType type) {
   IogBTNode_t *node = (IogBTNode_t *) calloc(1, sizeof (IogBTNode_t));
 
   if (node == NULL) {
@@ -17,9 +18,29 @@ IogBTNode_t *iog_BTNodeInit (IogBTData_t data) {
     node->data  = data;
     node->right = NULL;
     node->left  = NULL;
+
+    node->state = USUAL;
+    node->type  = type;
   }
 
   return node;
+}
+
+IogBTNode_t *iog_BTNodeCopy (IogBTNode_t *node) {
+  IOG_ASSERT(node);
+
+  IogBTNode_t *new_node = iog_BTNodeInit(0);
+  memcpy(new_node, node, sizeof(IogBTNode_t));
+
+  return new_node;
+}
+
+int iog_BTNodeEnNull (IogBTNode_t *node) {
+  if (node != NULL) {
+    memset(node, 0, sizeof (IogBTNode_t));
+  }
+
+  return OK;
 }
 
 int iog_BTNodeInsert  (IogBTNode_t *root, IogBTNode_t *node) {
@@ -54,6 +75,56 @@ int iog_BTNodeInsertD (IogBTNode_t *root, IogBTData_t data) {
 
   return iog_BTNodeInsert(root, iog_BTNodeInit(data));
 }
+
+int iog_BTNodeInitRight (IogBTNode_t *node, IogBTData_t data, IogBTNodeType) {
+  IOG_ASSERT(node);
+
+  if (node->right != NULL) {
+    fprintf(stderr, RED("BTNodeInitRightError: Right pointer isn't NULL\n"));
+    return ERR;
+  }
+  node->right = iog_BTNodeInit(data);
+
+  return OK;
+}
+
+int iog_BTNodeInitLeft (IogBTNode_t *node, IogBTData_t data, IogBTNodeType type) {
+  IOG_ASSERT(node);
+
+  if (node->left != NULL) {
+    fprintf(stderr, RED("BTNodeInitLeftError: Left pointer isn't NULL\n"));
+    return ERR;
+  }
+
+  node->left = iog_BTNodeInit(data, type);
+
+  return OK;
+}
+
+int iog_BTNodeHangRight (IogBTNode_t *node, IogBTNode_t *hanging_node) {
+  IOG_ASSERT(node);
+
+  if (node->right != NULL) {
+    fprintf(stderr, RED("BTNodeHangRightError: Right pointer isn't NULL\n"));
+    return ERR;
+  }
+  node->right = hanging_node;
+
+  return OK;
+}
+
+int iog_BTNodeHangLeft (IogBTNode_t *node, IogBTNode_t *hanging_node) {
+  IOG_ASSERT(node);
+
+  if (node->left != NULL) {
+    fprintf(stderr, RED("BTNodeHangLeftError: Left pointer isn't NULL\n"));
+    return ERR;
+  }
+  node->left = hanging_node;
+
+  return OK;
+}
+
 
 int iog_BTDestroy (IogBTNode_t **root) {
   IOG_ASSERT(root); 

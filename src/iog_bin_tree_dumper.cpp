@@ -88,13 +88,13 @@ int iog_BTGraphPrint(FILE *dump_file, const IogBTNode_t *root, int rank) {
     fprintf(dump_file,
       "elem_%p [\n"
       "  shape=record,\n"
-      "  label=\"{elem_%p  | { {data | right | left} | {%lg | %p | %p} } }\",\n"
+      "  label=\"{elem_%p  | { {data | type | right | left} | {%lg | %d | %p | %p} } }\",\n"
       "  fillcolor=%s,\n"
       "  color=black,\n"
       "  style=\"filled\"\n"
       "];\n",
       root,
-      root, root->data, root->right, root->left,
+      root, root->data, root->type, root->right, root->left,
       root->state == STRESSED ? "lightblue" : "lightgrey"
     );
 

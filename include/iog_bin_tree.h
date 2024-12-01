@@ -11,10 +11,24 @@ typedef double IogBTData_t;
   iog_BTDump(root, {#root, __FILE__, __PRETTY_FUNCTION__, __LINE__}, dumps_count);\
 }
 
+const IogBTData_t OP_NONE  = 0;
+const IogBTData_t OP_ADD   = 1;
+const IogBTData_t OP_SUB   = 2;
+const IogBTData_t OP_MUL   = 3;
+const IogBTData_t OP_DIV   = 4;
+const IogBTData_t OP_POW   = 4;
+
 enum IogBTNodeState {
   USUAL    = 0,
   STRESSED = 1,
 };
+
+enum IogBTNodeType {
+  NUMBER    = 0,
+  OPERATION = 1,
+  VARIABLE  = 2,
+};
+
 
 struct IogDebugInfo_t {
   const char *name;
@@ -29,12 +43,21 @@ struct IogBTNode_t {
   IogBTNode_t *left;
 
   IogBTNodeState state;
+  IogBTNodeType type;
 };
 
-IogBTNode_t *iog_BTNodeInit (IogBTData_t data);
+IogBTNode_t *iog_BTNodeInit (IogBTData_t data, IogBTNodeType type = NUMBER);
+IogBTNode_t *iog_BTNodeCopy (IogBTNode_t *node);
+
+int iog_BTNodeEnNull (IogBTNode_t *node);
 
 int iog_BTNodeInsert  (IogBTNode_t *root, IogBTNode_t *node);
 int iog_BTNodeInsertD (IogBTNode_t *root, IogBTData_t data);
+
+int iog_BTNodeInitRight (IogBTNode_t *node, IogBTData_t data, IogBTNodeType type = NUMBER);
+int iog_BTNodeInitLeft  (IogBTNode_t *node, IogBTData_t data, IogBTNodeType type = NUMBER);
+int iog_BTNodeHangRight (IogBTNode_t *node, IogBTNode_t *hanging_node);
+int iog_BTNodeHangLeft  (IogBTNode_t *node, IogBTNode_t *hanging_node);
 
 int iog_BTDestroy (IogBTNode_t **root);
 

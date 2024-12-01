@@ -1,0 +1,107 @@
+digraph G {
+debug_info [
+shape=record,
+label="{debug info | { {list name | file name | function name | line number | datetime} | {tree | main.cpp | int main(const int, const char **) | 37 | 2024-11-29_19.16} }}",
+fillcolor=white,
+color=grey,
+style="filled",
+];
+elem_0x102702020 [
+  shape=record,
+  label="{elem_0x102702020  | { {data | type | right | left} | {2 | 1 | 0x102701e40 | 0x102701e70} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+elem_0x102701e70 [
+  shape=record,
+  label="{elem_0x102701e70  | { {data | type | right | left} | {1 | 1 | 0x102701fc0 | 0x102701ff0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+elem_0x102701ff0 [
+  shape=record,
+  label="{elem_0x102701ff0  | { {data | type | right | left} | {10 | 0 | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x102701fc0 [
+  shape=record,
+  label="{elem_0x102701fc0  | { {data | type | right | left} | {3 | 1 | 0x102701f60 | 0x102701f90} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+elem_0x102701f90 [
+  shape=record,
+  label="{elem_0x102701f90  | { {data | type | right | left} | {2 | 0 | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x102701f60 [
+  shape=record,
+  label="{elem_0x102701f60  | { {data | type | right | left} | {1 | 1 | 0x102701ea0 | 0x102701ed0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+elem_0x102701ed0 [
+  shape=record,
+  label="{elem_0x102701ed0  | { {data | type | right | left} | {4 | 1 | 0x102701f00 | 0x102701f30} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+elem_0x102701f30 [
+  shape=record,
+  label="{elem_0x102701f30  | { {data | type | right | left} | {20 | 0 | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x102701f00 [
+  shape=record,
+  label="{elem_0x102701f00  | { {data | type | right | left} | {2 | 0 | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x102701ed0 -> elem_0x102701f30;
+elem_0x102701ed0 -> elem_0x102701f00;
+
+elem_0x102701ea0 [
+  shape=record,
+  label="{elem_0x102701ea0  | { {data | type | right | left} | {3 | 0 | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x102701f60 -> elem_0x102701ed0;
+elem_0x102701f60 -> elem_0x102701ea0;
+
+elem_0x102701fc0 -> elem_0x102701f90;
+elem_0x102701fc0 -> elem_0x102701f60;
+
+elem_0x102701e70 -> elem_0x102701ff0;
+elem_0x102701e70 -> elem_0x102701fc0;
+
+elem_0x102701e40 [
+  shape=record,
+  label="{elem_0x102701e40  | { {data | type | right | left} | {-2.5 | 0 | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x102702020 -> elem_0x102701e70;
+elem_0x102702020 -> elem_0x102701e40;
+
+}
