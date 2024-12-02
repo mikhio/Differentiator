@@ -100,7 +100,7 @@ int GetPower (IogContext_t *cont, IogBTNode_t *tree) {
     iog_BTNodeEnNull(tree);
 
     tree->type = OPERATION;
-    tree->data = OP_DIV;
+    tree->data = OP_POW;
 
     tree->left = old_tree;
 
@@ -128,12 +128,28 @@ int GetExpr (IogContext_t *cont, IogBTNode_t *tree) {
 
     (cont->p)++;
   } else {
-    tree->type = NUMBER;
-    GetDouble(cont, &tree->data);
+    GetUnit(cont, tree);
   }
 
   GetSpace(cont);
 
+
+  return OK;
+}
+
+int GetUnit (IogContext_t *cont, IogBTNode_t *tree) {
+  IOG_ASSERT(cont);
+  IOG_ASSERT(tree);
+
+  if (GET_CHAR(cont) == 'x') {
+    tree->type = VARIABLE;
+    tree->data = (double) 'x';
+
+    (cont->p)++;
+  } else {
+    tree->type = NUMBER;
+    GetDouble(cont, &tree->data);
+  }
 
   return OK;
 }

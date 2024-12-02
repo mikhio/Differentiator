@@ -85,18 +85,8 @@ int iog_BTGraphPrint(FILE *dump_file, const IogBTNode_t *root, int rank) {
   IOG_ASSERT(dump_file);
 
   if (root != NULL) {
-    fprintf(dump_file,
-      "elem_%p [\n"
-      "  shape=record,\n"
-      "  label=\"{elem_%p  | { {data | type | right | left} | {%lg | %d | %p | %p} } }\",\n"
-      "  fillcolor=%s,\n"
-      "  color=black,\n"
-      "  style=\"filled\"\n"
-      "];\n",
-      root,
-      root, root->data, root->type, root->right, root->left,
-      root->state == STRESSED ? "lightblue" : "lightgrey"
-    );
+    
+    printNode(dump_file, root);
 
     iog_BTGraphPrint(dump_file, root->left, rank+1);
     iog_BTGraphPrint(dump_file, root->right, rank+1);
@@ -112,4 +102,75 @@ int iog_BTGraphPrint(FILE *dump_file, const IogBTNode_t *root, int rank) {
   return OK;
 }
 
+static int printNode(FILE *dump_file, const IogBTNode_t *node) {
+  IOG_ASSERT(dump_file);
+  IOG_ASSERT(node);
 
+  char type_str[MAX_WORD_LEN] = "";
+  char data_str[MAX_WORD_LEN] = "";
+
+  switch ((int) node->type) {
+    case NUMBER:
+    {
+      snprintf(type_str, MAX_WORD_LEN, "NUMBER");
+      snprintf(data_str, MAX_WORD_LEN, "%lg", node->data);
+      break;
+    }
+    case VARIABLE:
+    {
+      snprintf(type_str, MAX_WORD_LEN, "VARIABLE");
+      snprintf(data_str, MAX_WORD_LEN, "%c", (char) node->data);
+      break;
+    }
+    case OPERATION:
+    {
+      snprintf(type_str, MAX_WORD_LEN, "OPERATION");
+      switch ((int) node->data) {
+        case  OP_NONE:
+          snprintf(data_str, MAX_WORD_LEN, "OP_NONE");
+          break;
+        case OP_ADD:
+          snprintf(data_str, MAX_WORD_LEN, "OP_ADD");
+          break;
+        case OP_SUB:
+          snprintf(data_str, MAX_WORD_LEN, "OP_SUB");
+          break;
+        case OP_MUL:
+          snprintf(data_str, MAX_WORD_LEN, "OP_MUL");
+          break;
+        case OP_DIV:
+          snprintf(data_str, MAX_WORD_LEN, "OP_DIV");
+          break;
+        case OP_POW:
+          snprintf(data_str, MAX_WORD_LEN, "OP_POW");
+          break;
+        default:
+          fprintf(stderr, RED("PrintError: Undefined operation type %lg of node %p\n"), node->data, node);
+          snprintf(data_str, MAX_WORD_LEN, "UNDEFINED");
+          break;
+      }
+      break;
+    }
+    default:
+    {
+      fprintf(stderr, RED("PrintError: Undefined type %d of node %p\n"), node->type, node);
+      snprintf(type_str, MAX_WORD_LEN, "UNDEFINED"); 
+      break;
+    }
+  }
+
+  fprintf(dump_file,
+    "elem_%p [\n"
+    "  shape=record,\n"
+    "  label=\"{elem_%p  | { {data | type | right | left} | {%s | %s | %p | %p} } }\",\n"
+    "  fillcolor=%s,\n"
+    "  color=black,\n"
+    "  style=\"filled\"\n"
+    "];\n",
+    node,
+    node, data_str, type_str, node->right, node->left,
+    node->state == STRESSED ? "lightblue" : "lightgrey"
+  );
+
+  return OK;
+}

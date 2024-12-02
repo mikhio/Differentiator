@@ -16,4 +16,6 @@ const char PNG_DUMPS_FOLDER[MAX_FILENAME_LEN]  = "png_dumps";
 int iog_BTGraphDump  (const IogBTNode_t *root, const IogDebugInfo_t debug, size_t *dumps_count);
 int iog_BTGraphPrint (FILE *dump_file, const IogBTNode_t *root, int rank);
 
+static int printNode(FILE *dump_file, const IogBTNode_t *node);
+
 #endif // IOG_BIN_TREE_DUMPER_H

@@ -11,12 +11,14 @@ typedef double IogBTData_t;
   iog_BTDump(root, {#root, __FILE__, __PRETTY_FUNCTION__, __LINE__}, dumps_count);\
 }
 
-const IogBTData_t OP_NONE  = 0;
-const IogBTData_t OP_ADD   = 1;
-const IogBTData_t OP_SUB   = 2;
-const IogBTData_t OP_MUL   = 3;
-const IogBTData_t OP_DIV   = 4;
-const IogBTData_t OP_POW   = 4;
+const size_t MAX_WORD_LEN = 50;
+
+const int OP_NONE  = 0;
+const int OP_ADD   = 1;
+const int OP_SUB   = 2;
+const int OP_MUL   = 3;
+const int OP_DIV   = 4;
+const int OP_POW   = 5;
 
 enum IogBTNodeState {
   USUAL    = 0,

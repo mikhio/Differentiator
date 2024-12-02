@@ -12,8 +12,7 @@
 // Monomial   := Power{['*','/']Power}*
 // Power      := Expr[^Expr]
 // Expr       := Space('('Polynomial')' | Unit)Space
-// Unit       := Variable | Double
-// Variable   := 'x'
+// Unit       := 'x' | Double
 // Space      := [' ', '\n', '\t']*
 // Dobule     := ['-']PosDouble
 // PosDouble  := Number['.'Number]
@@ -36,8 +35,7 @@ int GetPolynomial (IogContext_t *cont, IogBTNode_t *tree);
 int GetMonomial   (IogContext_t *cont, IogBTNode_t *tree);
 int GetPower      (IogContext_t *cont, IogBTNode_t *tree);
 int GetExpr       (IogContext_t *cont, IogBTNode_t *tree);
-
-int GetVariable   (IogContext_t *cont, char *val);
+int GetUnit       (IogContext_t *cont, IogBTNode_t *tree);
 
 int GetSpace      (IogContext_t *cont);
 int GetDouble     (IogContext_t *cont, double *val);
