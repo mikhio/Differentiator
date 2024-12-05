@@ -1,6 +1,7 @@
 #include "iog_expr_parser.h"
 #include "iog_bin_tree.h"
 #include "differentiator.h"
+#include "expr_printer.h"
 
 #include "cli_colors.h"
 #include "iog_assert.h"
@@ -42,6 +43,14 @@ int main(const int argc, const char *argv[]) {
 
   differentiate_tree(diff_tree);
   IOG_BT_DUMP(diff_tree, &dumps_count);
+
+  fprintf(stdout, "IN EXPR:   ");
+  print_expression(stdout, tree);
+  fprintf(stdout, "\n");
+
+  fprintf(stdout, "DIFF EXPR: ");
+  print_expression(stdout, diff_tree);
+  fprintf(stdout, "\n");
 
   iog_BTDestroy(&tree);
   iog_BTDestroy(&diff_tree);

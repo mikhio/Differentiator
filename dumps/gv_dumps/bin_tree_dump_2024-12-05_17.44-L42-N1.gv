@@ -1,0 +1,35 @@
+digraph G {
+debug_info [
+shape=record,
+label="{debug info | { {list name | file name | function name | line number | datetime} | {diff_tree | main.cpp | int main(const int, const char **) | 42 | 2024-12-05_17.44} }}",
+fillcolor=white,
+color=grey,
+style="filled",
+];
+elem_0x104501d80 [
+  shape=record,
+  label="{elem_0x104501d80  | { {data | type | right | left} | {OP_DIV | OPERATION | 0x104501d50 | 0x104501d20} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+elem_0x104501d20 [
+  shape=record,
+  label="{elem_0x104501d20  | { {data | type | right | left} | {10 | NUMBER | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x104501d50 [
+  shape=record,
+  label="{elem_0x104501d50  | { {data | type | right | left} | {x | VARIABLE | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x104501d80 -> elem_0x104501d20;
+elem_0x104501d80 -> elem_0x104501d50;
+
+}

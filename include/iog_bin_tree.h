@@ -14,11 +14,11 @@ typedef double IogBTData_t;
 const size_t MAX_WORD_LEN = 50;
 
 const int OP_NONE  = 0;
-const int OP_ADD   = 1;
-const int OP_SUB   = 2;
-const int OP_MUL   = 3;
-const int OP_DIV   = 4;
-const int OP_POW   = 5;
+const int OP_ADD   = '+';
+const int OP_SUB   = '-';
+const int OP_MUL   = '*';
+const int OP_DIV   = '/';
+const int OP_POW   = '^';
 
 enum IogBTNodeState {
   USUAL    = 0,
