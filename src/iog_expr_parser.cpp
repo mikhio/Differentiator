@@ -30,7 +30,7 @@ int GetPolynomial (IogContext_t *cont, IogBTNode_t *tree) {
   while ((GET_CHAR(cont) == '+') ||(GET_CHAR(cont) == '-')) {
     char op = GET_CHAR(cont);
 
-    IogBTNode_t *old_tree = iog_BTNodeCopy(tree); 
+    IogBTNode_t *old_tree = iog_BTNodeClone(tree); 
     iog_BTNodeEnNull(tree);
 
     if (op == '+') {
@@ -64,7 +64,7 @@ int GetMonomial (IogContext_t *cont, IogBTNode_t *tree) {
   while ((GET_CHAR(cont) == '*') ||(GET_CHAR(cont) == '/')) {
     char op = GET_CHAR(cont);
 
-    IogBTNode_t *old_tree = iog_BTNodeCopy(tree);
+    IogBTNode_t *old_tree = iog_BTNodeClone(tree);
     iog_BTNodeEnNull(tree);
 
     if (op == '*') {
@@ -96,7 +96,7 @@ int GetPower (IogContext_t *cont, IogBTNode_t *tree) {
   if (GET_CHAR(cont) == '^') {
     (cont->p)++;
 
-    IogBTNode_t *old_tree = iog_BTNodeCopy(tree);
+    IogBTNode_t *old_tree = iog_BTNodeClone(tree);
     iog_BTNodeEnNull(tree);
 
     tree->type = OPERATION;

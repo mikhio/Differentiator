@@ -48,10 +48,12 @@ struct IogBTNode_t {
   IogBTNodeType type;
 };
 
-IogBTNode_t *iog_BTNodeInit (IogBTData_t data, IogBTNodeType type = NUMBER);
-IogBTNode_t *iog_BTNodeCopy (const IogBTNode_t *node);
+IogBTNode_t *iog_BTNodeInit  (IogBTData_t data, IogBTNodeType type = NUMBER);
 
-IogBTNode_t *iog_BTCopy     (const IogBTNode_t *root);
+IogBTNode_t *iog_BTNodeClone (const IogBTNode_t *node);
+IogBTNode_t *iog_BTClone     (const IogBTNode_t *root);
+
+int iog_BTNodeCopy (IogBTNode_t *dest, const IogBTNode_t *src);
 
 int iog_BTNodeEnNull (IogBTNode_t *node);
 
@@ -62,6 +64,7 @@ int iog_BTNodeInitRight (IogBTNode_t *node, IogBTData_t data, IogBTNodeType type
 int iog_BTNodeInitLeft  (IogBTNode_t *node, IogBTData_t data, IogBTNodeType type = NUMBER);
 int iog_BTNodeHangRight (IogBTNode_t *node, IogBTNode_t *hanging_node);
 int iog_BTNodeHangLeft  (IogBTNode_t *node, IogBTNode_t *hanging_node);
+
 
 int iog_BTDestroy (IogBTNode_t **root);
 

@@ -1,0 +1,71 @@
+digraph G {
+debug_info [
+shape=record,
+label="{debug info | { {list name | file name | function name | line number | datetime} | {tree | main.cpp | int main(const int, const char **) | 40 | 2024-12-05_18.50} }}",
+fillcolor=white,
+color=grey,
+style="filled",
+];
+elem_0x107102020 [
+  shape=record,
+  label="{elem_0x107102020  | { {data | type | right | left} | {OP_DIV | OPERATION | 0x107101f60 | 0x107101f90} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+elem_0x107101f90 [
+  shape=record,
+  label="{elem_0x107101f90  | { {data | type | right | left} | {OP_ADD | OPERATION | 0x107101fc0 | 0x107101ff0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+elem_0x107101ff0 [
+  shape=record,
+  label="{elem_0x107101ff0  | { {data | type | right | left} | {10 | NUMBER | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x107101fc0 [
+  shape=record,
+  label="{elem_0x107101fc0  | { {data | type | right | left} | {x | VARIABLE | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x107101f90 -> elem_0x107101ff0;
+elem_0x107101f90 -> elem_0x107101fc0;
+
+elem_0x107101f60 [
+  shape=record,
+  label="{elem_0x107101f60  | { {data | type | right | left} | {OP_SUB | OPERATION | 0x107101f00 | 0x107101f30} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+elem_0x107101f30 [
+  shape=record,
+  label="{elem_0x107101f30  | { {data | type | right | left} | {10 | NUMBER | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x107101f00 [
+  shape=record,
+  label="{elem_0x107101f00  | { {data | type | right | left} | {x | VARIABLE | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x107101f60 -> elem_0x107101f30;
+elem_0x107101f60 -> elem_0x107101f00;
+
+elem_0x107102020 -> elem_0x107101f90;
+elem_0x107102020 -> elem_0x107101f60;
+
+}

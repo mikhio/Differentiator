@@ -26,7 +26,7 @@ IogBTNode_t *iog_BTNodeInit (IogBTData_t data, IogBTNodeType type) {
   return node;
 }
 
-IogBTNode_t *iog_BTNodeCopy (const IogBTNode_t *node) {
+IogBTNode_t *iog_BTNodeClone (const IogBTNode_t *node) {
   IOG_ASSERT(node);
 
   IogBTNode_t *new_node = iog_BTNodeInit(0);
@@ -35,16 +35,26 @@ IogBTNode_t *iog_BTNodeCopy (const IogBTNode_t *node) {
   return new_node;
 }
 
-IogBTNode_t *iog_BTCopy (const IogBTNode_t *root) {
+IogBTNode_t *iog_BTClone (const IogBTNode_t *root) {
   if (root == NULL)
     return NULL;
 
-  IogBTNode_t *new_root = iog_BTNodeCopy(root);
+  IogBTNode_t *new_root = iog_BTNodeClone(root);
 
-  new_root->right = iog_BTCopy(root->right);
-  new_root->left  = iog_BTCopy(root->left);
+  new_root->right = iog_BTClone(root->right);
+  new_root->left  = iog_BTClone(root->left);
 
   return new_root;
+}
+
+int iog_BTNodeCopy (IogBTNode_t *dest, const IogBTNode_t *src) {
+  IOG_ASSERT(dest);
+  IOG_ASSERT(src);
+
+  iog_BTNodeEnNull(dest);
+  memcpy(dest, src, sizeof(IogBTNode_t));
+
+  return OK;
 }
 
 int iog_BTNodeEnNull (IogBTNode_t *node) {

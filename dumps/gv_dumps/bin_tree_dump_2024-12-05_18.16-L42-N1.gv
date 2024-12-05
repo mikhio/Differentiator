@@ -1,0 +1,53 @@
+digraph G {
+debug_info [
+shape=record,
+label="{debug info | { {list name | file name | function name | line number | datetime} | {diff_tree | main.cpp | int main(const int, const char **) | 42 | 2024-12-05_18.16} }}",
+fillcolor=white,
+color=grey,
+style="filled",
+];
+elem_0x106c01d20 [
+  shape=record,
+  label="{elem_0x106c01d20  | { {data | type | right | left} | {OP_ADD | OPERATION | 0x106c01cf0 | 0x106c01c60} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+elem_0x106c01c60 [
+  shape=record,
+  label="{elem_0x106c01c60  | { {data | type | right | left} | {10 | NUMBER | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x106c01cf0 [
+  shape=record,
+  label="{elem_0x106c01cf0  | { {data | type | right | left} | {OP_POW | OPERATION | 0x106c01cc0 | 0x106c01c90} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+elem_0x106c01c90 [
+  shape=record,
+  label="{elem_0x106c01c90  | { {data | type | right | left} | {x | VARIABLE | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x106c01cc0 [
+  shape=record,
+  label="{elem_0x106c01cc0  | { {data | type | right | left} | {2 | NUMBER | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x106c01cf0 -> elem_0x106c01c90;
+elem_0x106c01cf0 -> elem_0x106c01cc0;
+
+elem_0x106c01d20 -> elem_0x106c01c60;
+elem_0x106c01d20 -> elem_0x106c01cf0;
+
+}

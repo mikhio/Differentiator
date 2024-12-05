@@ -44,11 +44,11 @@ int differentiate_tree (IogBTNode_t *root) {
           IogBTNode_t *left_node = iog_BTNodeInit(OP_MUL, OPERATION);
           IogBTNode_t *right_node = iog_BTNodeInit(OP_MUL, OPERATION);
           
-          left_node->left = iog_BTCopy(root->left);
+          left_node->left = iog_BTClone(root->left);
           differentiate_tree(left_node->left);
           left_node->right = root->right;
 
-          right_node->left = iog_BTCopy(root->right);
+          right_node->left = iog_BTClone(root->right);
           differentiate_tree(right_node->left);
           right_node->right = root->left;
 
@@ -77,7 +77,7 @@ int differentiate_tree (IogBTNode_t *root) {
           root->right->left->left = root->left;
           root->right->left->right = iog_BTNodeInit(deg-1, NUMBER);
 
-          root->right->right = iog_BTCopy(root->left);
+          root->right->right = iog_BTClone(root->left);
           differentiate_tree(root->right->right);
 
           root->left = iog_BTNodeInit(deg, NUMBER);

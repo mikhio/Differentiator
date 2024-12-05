@@ -1,0 +1,89 @@
+digraph G {
+debug_info [
+shape=record,
+label="{debug info | { {list name | file name | function name | line number | datetime} | {diff_tree | main.cpp | int main(const int, const char **) | 45 | 2024-12-05_18.16} }}",
+fillcolor=white,
+color=grey,
+style="filled",
+];
+elem_0x106c01d20 [
+  shape=record,
+  label="{elem_0x106c01d20  | { {data | type | right | left} | {OP_ADD | OPERATION | 0x106c01cf0 | 0x106c01c60} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+elem_0x106c01c60 [
+  shape=record,
+  label="{elem_0x106c01c60  | { {data | type | right | left} | {0 | NUMBER | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x106c01cf0 [
+  shape=record,
+  label="{elem_0x106c01cf0  | { {data | type | right | left} | {OP_MUL | OPERATION | 0x106c01c30 | 0x106c01b70} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+elem_0x106c01b70 [
+  shape=record,
+  label="{elem_0x106c01b70  | { {data | type | right | left} | {2 | NUMBER | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x106c01c30 [
+  shape=record,
+  label="{elem_0x106c01c30  | { {data | type | right | left} | {OP_MUL | OPERATION | 0x106c01ba0 | 0x106c01c00} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+elem_0x106c01c00 [
+  shape=record,
+  label="{elem_0x106c01c00  | { {data | type | right | left} | {OP_POW | OPERATION | 0x106c01bd0 | 0x106c01c90} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+elem_0x106c01c90 [
+  shape=record,
+  label="{elem_0x106c01c90  | { {data | type | right | left} | {x | VARIABLE | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x106c01bd0 [
+  shape=record,
+  label="{elem_0x106c01bd0  | { {data | type | right | left} | {1 | NUMBER | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x106c01c00 -> elem_0x106c01c90;
+elem_0x106c01c00 -> elem_0x106c01bd0;
+
+elem_0x106c01ba0 [
+  shape=record,
+  label="{elem_0x106c01ba0  | { {data | type | right | left} | {1 | NUMBER | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x106c01c30 -> elem_0x106c01c00;
+elem_0x106c01c30 -> elem_0x106c01ba0;
+
+elem_0x106c01cf0 -> elem_0x106c01b70;
+elem_0x106c01cf0 -> elem_0x106c01c30;
+
+elem_0x106c01d20 -> elem_0x106c01c60;
+elem_0x106c01d20 -> elem_0x106c01cf0;
+
+}

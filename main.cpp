@@ -2,6 +2,7 @@
 #include "iog_bin_tree.h"
 #include "differentiator.h"
 #include "expr_printer.h"
+#include "expr_simplifier.h"
 
 #include "cli_colors.h"
 #include "iog_assert.h"
@@ -38,11 +39,13 @@ int main(const int argc, const char *argv[]) {
   size_t dumps_count = 0;
   IOG_BT_DUMP(tree, &dumps_count);
 
-  IogBTNode_t *diff_tree = iog_BTCopy(tree);
-  IOG_BT_DUMP(diff_tree, &dumps_count);
-
+  IogBTNode_t *diff_tree = iog_BTClone(tree);
   differentiate_tree(diff_tree);
   IOG_BT_DUMP(diff_tree, &dumps_count);
+
+  IogBTNode_t *simp_tree = iog_BTClone(diff_tree);
+  simplify_tree(simp_tree);
+  IOG_BT_DUMP(simp_tree, &dumps_count);
 
   fprintf(stdout, "IN EXPR:   ");
   print_expression(stdout, tree);
@@ -52,8 +55,13 @@ int main(const int argc, const char *argv[]) {
   print_expression(stdout, diff_tree);
   fprintf(stdout, "\n");
 
+  fprintf(stdout, "SIMP EXPR: ");
+  print_expression(stdout, simp_tree);
+  fprintf(stdout, "\n");
+
   iog_BTDestroy(&tree);
   iog_BTDestroy(&diff_tree);
+  iog_BTDestroy(&simp_tree);
 
   return 0;
 }

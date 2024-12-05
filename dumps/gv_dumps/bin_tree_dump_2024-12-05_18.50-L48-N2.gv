@@ -1,0 +1,179 @@
+digraph G {
+debug_info [
+shape=record,
+label="{debug info | { {list name | file name | function name | line number | datetime} | {simp_tree | main.cpp | int main(const int, const char **) | 48 | 2024-12-05_18.50} }}",
+fillcolor=white,
+color=grey,
+style="filled",
+];
+elem_0x1071017e0 [
+  shape=record,
+  label="{elem_0x1071017e0  | { {data | type | right | left} | {OP_ADD | OPERATION | 0x1071017b0 | 0x107102c20} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+elem_0x107102c20 [
+  shape=record,
+  label="{elem_0x107102c20  | { {data | type | right | left} | {OP_POW | OPERATION | 0x107102bc0 | 0x107102b90} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+elem_0x107102b90 [
+  shape=record,
+  label="{elem_0x107102b90  | { {data | type | right | left} | {OP_SUB | OPERATION | 0x107102b60 | 0x107102b30} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+elem_0x107102b30 [
+  shape=record,
+  label="{elem_0x107102b30  | { {data | type | right | left} | {10 | NUMBER | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x107102b60 [
+  shape=record,
+  label="{elem_0x107102b60  | { {data | type | right | left} | {x | VARIABLE | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x107102b90 -> elem_0x107102b30;
+elem_0x107102b90 -> elem_0x107102b60;
+
+elem_0x107102bc0 [
+  shape=record,
+  label="{elem_0x107102bc0  | { {data | type | right | left} | {-1 | NUMBER | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x107102c20 -> elem_0x107102b90;
+elem_0x107102c20 -> elem_0x107102bc0;
+
+elem_0x1071017b0 [
+  shape=record,
+  label="{elem_0x1071017b0  | { {data | type | right | left} | {OP_MUL | OPERATION | 0x107101780 | 0x107102e30} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+elem_0x107102e30 [
+  shape=record,
+  label="{elem_0x107102e30  | { {data | type | right | left} | {OP_MUL | OPERATION | 0x107102e00 | 0x107102c50} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+elem_0x107102c50 [
+  shape=record,
+  label="{elem_0x107102c50  | { {data | type | right | left} | {-1 | NUMBER | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x107102e00 [
+  shape=record,
+  label="{elem_0x107102e00  | { {data | type | right | left} | {OP_MUL | OPERATION | 0x107102dd0 | 0x107102d40} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+elem_0x107102d40 [
+  shape=record,
+  label="{elem_0x107102d40  | { {data | type | right | left} | {OP_POW | OPERATION | 0x107102d10 | 0x107102ce0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+elem_0x107102ce0 [
+  shape=record,
+  label="{elem_0x107102ce0  | { {data | type | right | left} | {OP_SUB | OPERATION | 0x107102cb0 | 0x107102c80} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+elem_0x107102c80 [
+  shape=record,
+  label="{elem_0x107102c80  | { {data | type | right | left} | {10 | NUMBER | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x107102cb0 [
+  shape=record,
+  label="{elem_0x107102cb0  | { {data | type | right | left} | {x | VARIABLE | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x107102ce0 -> elem_0x107102c80;
+elem_0x107102ce0 -> elem_0x107102cb0;
+
+elem_0x107102d10 [
+  shape=record,
+  label="{elem_0x107102d10  | { {data | type | right | left} | {-2 | NUMBER | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x107102d40 -> elem_0x107102ce0;
+elem_0x107102d40 -> elem_0x107102d10;
+
+elem_0x107102dd0 [
+  shape=record,
+  label="{elem_0x107102dd0  | { {data | type | right | left} | {-1 | NUMBER | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x107102e00 -> elem_0x107102d40;
+elem_0x107102e00 -> elem_0x107102dd0;
+
+elem_0x107102e30 -> elem_0x107102c50;
+elem_0x107102e30 -> elem_0x107102e00;
+
+elem_0x107101780 [
+  shape=record,
+  label="{elem_0x107101780  | { {data | type | right | left} | {OP_ADD | OPERATION | 0x107101750 | 0x107102e60} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+elem_0x107102e60 [
+  shape=record,
+  label="{elem_0x107102e60  | { {data | type | right | left} | {10 | NUMBER | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x107101750 [
+  shape=record,
+  label="{elem_0x107101750  | { {data | type | right | left} | {x | VARIABLE | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x107101780 -> elem_0x107102e60;
+elem_0x107101780 -> elem_0x107101750;
+
+elem_0x1071017b0 -> elem_0x107102e30;
+elem_0x1071017b0 -> elem_0x107101780;
+
+elem_0x1071017e0 -> elem_0x107102c20;
+elem_0x1071017e0 -> elem_0x1071017b0;
+
+}

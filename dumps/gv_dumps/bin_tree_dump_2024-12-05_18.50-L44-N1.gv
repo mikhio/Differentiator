@@ -1,0 +1,233 @@
+digraph G {
+debug_info [
+shape=record,
+label="{debug info | { {list name | file name | function name | line number | datetime} | {diff_tree | main.cpp | int main(const int, const char **) | 44 | 2024-12-05_18.50} }}",
+fillcolor=white,
+color=grey,
+style="filled",
+];
+elem_0x107101cc0 [
+  shape=record,
+  label="{elem_0x107101cc0  | { {data | type | right | left} | {OP_ADD | OPERATION | 0x107101ae0 | 0x107101b10} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+elem_0x107101b10 [
+  shape=record,
+  label="{elem_0x107101b10  | { {data | type | right | left} | {OP_MUL | OPERATION | 0x107101b70 | 0x107101ab0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+elem_0x107101ab0 [
+  shape=record,
+  label="{elem_0x107101ab0  | { {data | type | right | left} | {OP_ADD | OPERATION | 0x107101a80 | 0x107101a50} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+elem_0x107101a50 [
+  shape=record,
+  label="{elem_0x107101a50  | { {data | type | right | left} | {0 | NUMBER | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x107101a80 [
+  shape=record,
+  label="{elem_0x107101a80  | { {data | type | right | left} | {1 | NUMBER | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x107101ab0 -> elem_0x107101a50;
+elem_0x107101ab0 -> elem_0x107101a80;
+
+elem_0x107101b70 [
+  shape=record,
+  label="{elem_0x107101b70  | { {data | type | right | left} | {OP_POW | OPERATION | 0x107101b40 | 0x107101c90} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+elem_0x107101c90 [
+  shape=record,
+  label="{elem_0x107101c90  | { {data | type | right | left} | {OP_SUB | OPERATION | 0x107101c60 | 0x107101c30} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+elem_0x107101c30 [
+  shape=record,
+  label="{elem_0x107101c30  | { {data | type | right | left} | {10 | NUMBER | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x107101c60 [
+  shape=record,
+  label="{elem_0x107101c60  | { {data | type | right | left} | {x | VARIABLE | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x107101c90 -> elem_0x107101c30;
+elem_0x107101c90 -> elem_0x107101c60;
+
+elem_0x107101b40 [
+  shape=record,
+  label="{elem_0x107101b40  | { {data | type | right | left} | {-1 | NUMBER | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x107101b70 -> elem_0x107101c90;
+elem_0x107101b70 -> elem_0x107101b40;
+
+elem_0x107101b10 -> elem_0x107101ab0;
+elem_0x107101b10 -> elem_0x107101b70;
+
+elem_0x107101ae0 [
+  shape=record,
+  label="{elem_0x107101ae0  | { {data | type | right | left} | {OP_MUL | OPERATION | 0x107101c00 | 0x107101a20} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+elem_0x107101a20 [
+  shape=record,
+  label="{elem_0x107101a20  | { {data | type | right | left} | {OP_MUL | OPERATION | 0x107101930 | 0x107101810} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+elem_0x107101810 [
+  shape=record,
+  label="{elem_0x107101810  | { {data | type | right | left} | {-1 | NUMBER | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x107101930 [
+  shape=record,
+  label="{elem_0x107101930  | { {data | type | right | left} | {OP_MUL | OPERATION | 0x1071018a0 | 0x107101900} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+elem_0x107101900 [
+  shape=record,
+  label="{elem_0x107101900  | { {data | type | right | left} | {OP_POW | OPERATION | 0x1071018d0 | 0x1071019c0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+elem_0x1071019c0 [
+  shape=record,
+  label="{elem_0x1071019c0  | { {data | type | right | left} | {OP_SUB | OPERATION | 0x107101990 | 0x107101960} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+elem_0x107101960 [
+  shape=record,
+  label="{elem_0x107101960  | { {data | type | right | left} | {10 | NUMBER | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x107101990 [
+  shape=record,
+  label="{elem_0x107101990  | { {data | type | right | left} | {x | VARIABLE | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x1071019c0 -> elem_0x107101960;
+elem_0x1071019c0 -> elem_0x107101990;
+
+elem_0x1071018d0 [
+  shape=record,
+  label="{elem_0x1071018d0  | { {data | type | right | left} | {-2 | NUMBER | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x107101900 -> elem_0x1071019c0;
+elem_0x107101900 -> elem_0x1071018d0;
+
+elem_0x1071018a0 [
+  shape=record,
+  label="{elem_0x1071018a0  | { {data | type | right | left} | {OP_SUB | OPERATION | 0x107101870 | 0x107101840} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+elem_0x107101840 [
+  shape=record,
+  label="{elem_0x107101840  | { {data | type | right | left} | {0 | NUMBER | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x107101870 [
+  shape=record,
+  label="{elem_0x107101870  | { {data | type | right | left} | {1 | NUMBER | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x1071018a0 -> elem_0x107101840;
+elem_0x1071018a0 -> elem_0x107101870;
+
+elem_0x107101930 -> elem_0x107101900;
+elem_0x107101930 -> elem_0x1071018a0;
+
+elem_0x107101a20 -> elem_0x107101810;
+elem_0x107101a20 -> elem_0x107101930;
+
+elem_0x107101c00 [
+  shape=record,
+  label="{elem_0x107101c00  | { {data | type | right | left} | {OP_ADD | OPERATION | 0x107101bd0 | 0x107101ba0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+elem_0x107101ba0 [
+  shape=record,
+  label="{elem_0x107101ba0  | { {data | type | right | left} | {10 | NUMBER | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x107101bd0 [
+  shape=record,
+  label="{elem_0x107101bd0  | { {data | type | right | left} | {x | VARIABLE | 0x0 | 0x0} } }",
+  fillcolor=lightgrey,
+  color=black,
+  style="filled"
+];
+
+elem_0x107101c00 -> elem_0x107101ba0;
+elem_0x107101c00 -> elem_0x107101bd0;
+
+elem_0x107101ae0 -> elem_0x107101a20;
+elem_0x107101ae0 -> elem_0x107101c00;
+
+elem_0x107101cc0 -> elem_0x107101b10;
+elem_0x107101cc0 -> elem_0x107101ae0;
+
+}
