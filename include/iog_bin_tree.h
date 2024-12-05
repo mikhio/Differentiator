@@ -49,7 +49,9 @@ struct IogBTNode_t {
 };
 
 IogBTNode_t *iog_BTNodeInit (IogBTData_t data, IogBTNodeType type = NUMBER);
-IogBTNode_t *iog_BTNodeCopy (IogBTNode_t *node);
+IogBTNode_t *iog_BTNodeCopy (const IogBTNode_t *node);
+
+IogBTNode_t *iog_BTCopy     (const IogBTNode_t *root);
 
 int iog_BTNodeEnNull (IogBTNode_t *node);
 

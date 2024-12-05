@@ -1,5 +1,6 @@
 #include "iog_expr_parser.h"
 #include "iog_bin_tree.h"
+#include "differentiator.h"
 
 #include "cli_colors.h"
 #include "iog_assert.h"
@@ -36,7 +37,14 @@ int main(const int argc, const char *argv[]) {
   size_t dumps_count = 0;
   IOG_BT_DUMP(tree, &dumps_count);
 
+  IogBTNode_t *diff_tree = iog_BTCopy(tree);
+  IOG_BT_DUMP(diff_tree, &dumps_count);
+
+  differentiate_tree(diff_tree);
+  IOG_BT_DUMP(diff_tree, &dumps_count);
+
   iog_BTDestroy(&tree);
+  iog_BTDestroy(&diff_tree);
 
   return 0;
 }
